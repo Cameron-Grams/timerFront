@@ -1,37 +1,22 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'; 
-import { respond } from './actions/timerActions'; 
+import { Provider } from 'react-redux'; 
+import store from './store'; 
+
+import Main from './Main'; 
 import './App.css';
 
 class App extends Component {
-  constructor( props ){
-    super( props );
-    this.sendResponse = this.sendResponse.bind( this );
-  }
-
-  sendResponse(){
-     return this.props.respond(); 
-  }
-
   render() {
-
-
-
-
     return (
-
+    <Provider store={ store } > 
       <div className="App">
         <header className="App-header">
-           <p>Insider the App</p>     
-           <button onClick={ () => this.sendResponse() } >Test Button</button>
+            < Main /> 
         </header>
       </div>
+    </Provider>
     );
   }
 }
 
-const mapStateToProps = ( state ) => ( {
-    ...state
-})
-
-export default connect( mapStateToProps, { respond } )( App );
+export default App;

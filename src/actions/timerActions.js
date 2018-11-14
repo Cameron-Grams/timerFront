@@ -8,3 +8,12 @@ export function respond(){
         type: actionTypes.One
     }
 }
+
+
+export function incrementTimer(){
+    console.log( 'in timer actions, function increment time.');
+
+    return{
+        type: actionTypes.increaseCount
+    }
+}

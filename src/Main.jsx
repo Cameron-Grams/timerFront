@@ -7,27 +7,26 @@ class Main extends Component {
   constructor( props ){
     super( props );
     this.sendResponse = this.sendResponse.bind( this );
-    this.updateCount = this.updateCount.bind( this ); 
+    this.endCount = this.endCount.bind( this ); 
+    this.timerId = "";
   }
 
   sendResponse(){
-    while( !this.props.receivedPage ){
-        let timerId = setInterval( () => this.props.incrementTimer(), 1000 ); 
-    }
-     return this.props.respond(); 
+      this.timerId = setInterval( () => this.props.incrementTimer(), 1000 ); 
+      return this.props.respond(); 
   }
 
-  updateCount(){
+  endCount(){
+      clearInterval( this.timerId );
   }
 
   render() {
 
     let countDisplay = this.props.receivedPage ? null :
-
-        this.props.totalCount;
-
-
-
+        <div>  
+        { this.props.totalCount }
+        <p>Retrieving resources, if count reaches 50 please refresh.</p>
+        </div>;
 
     return (
 
@@ -35,7 +34,8 @@ class Main extends Component {
         <header className="App-header">
             { countDisplay }
            <p>Inside the App</p>     
-           <button onClick={ () => this.sendResponse() } >Test Button</button>
+           <button onClick={ () => this.sendResponse() } >Start Button</button>
+           <button onClick={ () => this.endCount() } >End Button</button>
         </header>
       </div>
     );

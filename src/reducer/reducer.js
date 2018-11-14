@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 
 const initialState = {
-    receivedPage: false, 
+    receivedPage: true, 
     totalCount: 0
 }
 

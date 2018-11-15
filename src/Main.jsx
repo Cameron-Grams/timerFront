@@ -10,6 +10,7 @@ class Main extends Component {
     this.sendResponse = this.sendResponse.bind( this );
     this.endCount = this.endCount.bind( this ); 
     this.timerId = "";
+    this.timerDisplay = this.props.totalCount; 
   }
 
   sendResponse(){
@@ -23,11 +24,12 @@ class Main extends Component {
 
   render() {
 
-    let countDisplay = this.props.receivedPage ? null :
+    let countDisplay = ( this.props.isLoading ) ? 
         <div>  
-        { this.props.totalCount }
+        { this.timerDisplay }
         <p>Retrieving resources, if count reaches 50 please refresh.</p>
-        </div>;
+        </div>:
+        null;  
 
     return (
 
@@ -45,8 +47,9 @@ class Main extends Component {
 
 const mapStateToProps = ( state ) => ( {
     ...state,
-    receivedPage: state.receivedPage, 
-    totalCount: state.totalCount
+    isLoading: state.isLoading.isLoading,
+    receivedPage: state.receivedPage.receivedPage, 
+    totalCount: state.totalCount.totalCount
 });
 
 const mapDispatchToProps = ( dispatch ) => ( {

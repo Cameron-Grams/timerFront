@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { respond, incrementTimer } from './actions/timerActions'; 
+import { endpoint } from './config'; 
 import './App.css';
 
 class Main extends Component {
@@ -13,7 +14,7 @@ class Main extends Component {
 
   sendResponse(){
       this.timerId = setInterval( () => this.props.incrementTimer(), 1000 ); 
-      return this.props.respond(); 
+      return this.props.respond( endpoint ); 
   }
 
   endCount(){
@@ -44,8 +45,13 @@ class Main extends Component {
 
 const mapStateToProps = ( state ) => ( {
     ...state,
-    receivedPage: state.reducer.receivedPage, 
-    totalCount: state.reducer.totalCount
+    receivedPage: state.receivedPage, 
+    totalCount: state.totalCount
+});
+
+const mapDispatchToProps = ( dispatch ) => ( {
+    respond: ( endpoint ) => dispatch( respond( endpoint ) ),
+    incrementTimer: incrementTimer
 })
 
-export default connect( mapStateToProps, { respond, incrementTimer } )( Main );
+export default connect( mapStateToProps, mapDispatchToProps )( Main );

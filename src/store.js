@@ -1,15 +1,21 @@
-import { combineReducers, createStore, compose } from 'redux'; 
-import Reducer from './reducer/reducer';
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux'; 
+import thunk from 'redux-thunk'; 
+import { isLoadingReducer, errorReducer, receivedPageReducer, totalCountReducer } from './reducer/reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const MasterReducer = combineReducers( {
-    reducer: Reducer
+    isLoading: isLoadingReducer,
+    hasError: errorReducer,   
+    receivedPage: receivedPageReducer, 
+    totalCount: totalCountReducer
     })
 
 const store = createStore(
     MasterReducer,
-    composeEnhancers()
+    composeEnhancers(
+        applyMiddleware( thunk )
+    )
 )
 
 export default store;

@@ -4,8 +4,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     isLoading: false,
     hasError: false,
-    receivedPage: false, 
-    totalCount: 0
+    receivedPage: false
 }
 
 export const isLoadingReducer = ( state = initialState, action ) => {
@@ -40,17 +39,3 @@ export const receivedPageReducer = ( state = initialState, action ) => {
             return{ receivedPage: state.receivedPage }
     }
 }
-
-export const totalCountReducer = ( state = initialState, action ) => {
-    console.log( 'in reducer with count: ', state.totalCount )
-    switch ( action.type ){
-        case( actionTypes.increaseCount ):
-            return{
-                totalCount: state.totalCount + 1
-            }
-
-        default: 
-            return { totalCount: state.totalCount }
-    }
-}
-

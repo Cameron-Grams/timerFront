@@ -1,5 +1,7 @@
 import * as actionTypes from './actionTypes'; 
 
+let timerId = null;
+
 export function webResponseError( bool ){
     return{
         type: actionTypes.responseError,
@@ -15,6 +17,7 @@ export function webResponseIsLoading( bool ){
 }
 
 function successResponse( data ){
+    clearInterval( timerId ); 
     return{
         type: actionTypes.receivedPage,
         data: data
@@ -37,13 +40,4 @@ export function respond( url ){
             .then(( items ) => dispatch( successResponse( items ) ) )
             .catch(() => dispatch( webResponseError( true ) ) );
     };
-}
-
-
-export function incrementTimer(){
-    console.log( 'in timer actions, function increment time.');
-
-    return{
-        type: actionTypes.increaseCount
-    }
 }

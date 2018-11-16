@@ -28,8 +28,6 @@ class Main extends Component {
   }
 
   render() {
-      console.log( 'in main with the timer display', this.timerDisplay ); 
-
     let countDisplay = ( this.props.isLoading ) ? 
         <div>  
         { this.state.timerDisplay }

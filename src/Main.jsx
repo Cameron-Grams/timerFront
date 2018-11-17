@@ -28,6 +28,7 @@ class Main extends Component {
   }
 
   render() {
+
     let countDisplay = ( this.props.isLoading ) ? 
         <div>  
         { this.state.timerDisplay }
@@ -35,7 +36,10 @@ class Main extends Component {
         </div>:
         null;  
 
-    console.log( "In Main, returned message: ", this.props.returnedMessage ); 
+    if ( this.props.returnedMessage ){  
+        console.log( "In Main, returned message: ", this.props.returnedMessage.message ); 
+        this.props.history.push( '/leave-site' ); 
+    }
 
     return (
 

@@ -35,6 +35,8 @@ class Main extends Component {
         </div>:
         null;  
 
+    console.log( "In Main, returned message: ", this.props.returnedMessage ); 
+
     return (
 
       <div className="App">
@@ -52,7 +54,8 @@ class Main extends Component {
 const mapStateToProps = ( state ) => ( {
     ...state,
     isLoading: state.isLoading.isLoading,
-    receivedPage: state.receivedPage.receivedPage, 
+    receivedPage: state.receivedPage.receivedPage,
+    returnedMessage: state.receivedPage.returnedMessage
 });
 
 const mapDispatchToProps = ( dispatch ) => ( {

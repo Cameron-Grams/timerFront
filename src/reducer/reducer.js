@@ -4,7 +4,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     isLoading: false,
     hasError: false,
-    receivedPage: false
+    receivedPage: false,
+    returnedMessage: ""
 }
 
 export const isLoadingReducer = ( state = initialState, action ) => {
@@ -33,7 +34,8 @@ export const receivedPageReducer = ( state = initialState, action ) => {
     switch ( action.type ){
         case ( actionTypes.receivedPage ):
             return{
-                receivedPage: true
+                receivedPage: true,
+                returnedMessage: action.data
             }
         default:
             return{ receivedPage: state.receivedPage }

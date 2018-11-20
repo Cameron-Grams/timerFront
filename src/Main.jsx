@@ -41,14 +41,19 @@ class Main extends Component {
         this.props.history.push( '/leave-site' ); 
     }
 
+    let styles = {
+        "fontWeight": 700,
+        "color": "#234b8c"
+    };
+
     return (
 
       <div className="App">
         <header className="App-header">
             { countDisplay }
-           <p>Inside the App</p>     
-           <button onClick={ () => this.sendResponse() } >Start Button</button>
-           <button onClick={ () => this.endCount() } >End Button</button>
+           <p>Press <span style={ styles }>Start</span> to begin retrieving resources.</p>     
+           <button className="generalButton" onClick={ () => this.sendResponse() } >Start</button>
+           <button className="generalButton" onClick={ () => this.endCount() } >End Count</button>
         </header>
       </div>
     );

@@ -10,7 +10,7 @@ class Main extends Component {
     this.sendResponse = this.sendResponse.bind( this );
     this.endCount = this.endCount.bind( this ); 
     this.state = {
-        timerDisplay: 0
+        timerDisplay: 1
     }; 
   }
   

@@ -13,7 +13,7 @@ class App extends Component {
       < BrowserRouter > 
         < Switch > 
             < Route exact path="/" component={ Main } /> 
-            < Route exact path="/leave-site" component={ () => window.location = `${ endpoint }` } />
+            < Route exact path="/leave-site" component={ () => window.location.href = `${ endpoint }` } />
         </Switch>
       </ BrowserRouter >
     </Provider>
@@ -22,3 +22,5 @@ class App extends Component {
 }
 
 export default App;
+
+

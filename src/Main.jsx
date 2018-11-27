@@ -36,7 +36,7 @@ class Main extends Component {
         </div>:
         null;  
 
-    if ( this.props.returnedMessage ){  
+    if ( this.props.receivedPage ){  
         console.log( "In Main, returned message: ", this.props.returnedMessage.message ); 
         this.props.history.push( '/leave-site' ); 
     }
